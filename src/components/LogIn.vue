@@ -8,7 +8,7 @@
             <span>User</span>
         </label>
         <label class="toggle-option">
-            <input type="radio"  value="admin" v-model="userType">
+            <input type="radio" value="admin" v-model="userType">
             <span>Admin</span>
         </label>
     </div>
@@ -22,6 +22,7 @@
     <AdminLogIn v-if="userType == 'admin'"></AdminLogIn>
 </template>
 <script>
+// import Web3 from 'web3'
 import AdminLogIn from "./Admin/AdminLogin.vue";
 import axios from 'axios'
 export default {
@@ -31,18 +32,28 @@ export default {
             userType: 'user',
             aadhar: '',
             password: '',
-            error: false
+            error: false,
+            walleConnected: false
         }
     },
     components: {
         AdminLogIn
     },
     methods: {
+        async connectWallet() {
+            let ethereum = window.ethereum;
+            if (ethereum) {
+                await ethereum.request({ method: 'eth_requestAccounts' })
+                    .then(() => {
+                        this.walletConnected = true;
+                    });
+            }
+        },
         async login() {
 
             try {
-                
-                let uri = this.$url+"voters/"+this.aadhar;
+
+                let uri = this.$url + "voters/" + this.aadhar;
                 console.log(uri);
                 const result = await axios.get(uri)
 
@@ -50,16 +61,21 @@ export default {
                 const match = (result.data.aadharNumber === this.aadhar) && (result.data.password === this.password);
                 if (match) {
                     this.error = false;
-                    localStorage.setItem("user-info", JSON.stringify({ "aadharNumber": this.aadhar, "name": result.data.name }))
-                    console.log("OTPVERIFY",result.data.otpVerfied);
-                    if (result.data.otpVerfied)
-                    {
-                    this.$router.push({ name: 'HomeScreen' })
+                    
+                    console.log("OTPVERIFY", result.data.otpVerfied);
+                    if (result.data.otpVerfied) {
+                        await this.connectWallet();
+                        if (this.walletConnected) {
+                            localStorage.setItem("user-info", JSON.stringify({ "aadharNumber": this.aadhar, "name": result.data.name }))
+                            this.$router.push({ name: 'HomeScreen' })
+                        }
+                        else {
+                            alert("Connection to Wallet Failed, Try Again");
+                        }
                     }
-                    else
-                    {
+                    else {
                         alert("OTP Verification Pending");
-                        this.$router.push({name:"DummyPage"});
+                        this.$router.push({ name: "DummyPage" });
                     }
                 } else {
                     this.error = true;
@@ -73,11 +89,10 @@ export default {
         }
 
     },
-    mounted(){
-        let logged=localStorage.getItem("user-info");
-        if (logged)
-        {
-            this.$router.push({name:"HomeScreen"})
+    mounted() {
+        let logged = localStorage.getItem("user-info");
+        if (logged) {
+            this.$router.push({ name: "HomeScreen" })
         }
     }
 }
@@ -161,4 +176,5 @@ export default {
 
 .err {
     color: red;
-}</style>
+}
+</style>
