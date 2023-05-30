@@ -14,14 +14,24 @@ export default {
         return {
             eId: '',
             password: '',
-            error: false
+            error: false,
+            walleConnected: false
         }
     },
     methods: {
+        async connectWallet() {
+            let ethereum = window.ethereum;
+            if (ethereum) {
+                await ethereum.request({ method: 'eth_requestAccounts' })
+                    .then(() => {
+                        this.walletConnected = true;
+                    });
+            }
+        },
         async login() {
 
             try {
-                let uri = this.$url+"admins/"+this.eId;
+                let uri = this.$url + "admins/" + this.eId;
                 // let uri="api/voters/";
                 console.log(uri);
                 const result = await axios.get(
@@ -32,9 +42,14 @@ export default {
                 console.log(match)
                 if (match) {
                     this.error = false;
-                    localStorage.setItem("user-info", JSON.stringify({ "employeeId": this.eId, "name": result.data.name }))
-                    this.$router.push({ name: 'AdminHome' })
-                } else {
+                    await this.connectWallet();
+                    if (this.walletConnected) {
+                        localStorage.setItem("user-info", JSON.stringify({ "employeeId": this.eId, "name": result.data.name }))
+                        this.$router.push({ name: 'AdminHome' })
+                    } else {
+                        this.error = true;
+                        console.log("Connection to Wallet Failed, Try Again");
+                    }
                     this.error = true;
                     // Display error message
                     console.log('Invalid email or password.')
