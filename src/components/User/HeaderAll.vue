@@ -1,11 +1,15 @@
 <template>
-    <div class="nav">
-       <img src="../../assets/logo_1.png">
-       <router-link to="/">Home</router-link> 
-       <router-link to="/vote">Vote</router-link>
-       <router-link to="#">Profile</router-link>
-       <a v-on:click="logout">Logout</a>
-    </div>
+    <nav>
+        <ul>
+       <li><img src="../../assets/logo_1.png"/></li>
+    </ul>
+       <ul>
+       <li><router-link to="/">Home</router-link> </li>
+       <li><router-link to="/vote">Vote</router-link></li>
+       <li><router-link to="#">Profile</router-link></li>
+       <li><a v-on:click="logout">Logout</a></li>
+    </ul>
+    </nav>
 </template>
 <script>
 
@@ -23,6 +27,7 @@ export default{
 }
 
 </script>
+<!--
 <style>
     body{
         padding: 0;
@@ -52,3 +57,4 @@ export default{
         color: #000000;
     }
 </style>
+-->
