@@ -5,58 +5,190 @@ const app = createApp(App)
 app.config.globalProperties.$url = 'http://3.216.4.3:3000/'
 app.use(router).mount('#app')
 
-app.config.globalProperties.$contractAddress = "0x0d9455F35Fc243dE68a1a4231022E8573a8c913e"
+app.config.globalProperties.$contractAddress = 
+"0x62362736e5Aa12675ab8528cd1A8bcD8E1a957a5"
 app.config.globalProperties.$abi = JSON.parse(
     `[
-{
-    "inputs": [
         {
-            "internalType": "string",
-            "name": "_message",
-            "type": "string"
-        }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-},
-{
-    "inputs": [],
-    "name": "getMessage",
-    "outputs": [
+            "inputs": [],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
         {
-            "internalType": "string",
-            "name": "",
-            "type": "string"
-        }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-},
-{
-    "inputs": [],
-    "name": "message",
-    "outputs": [
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "voter",
+                    "type": "address"
+                }
+            ],
+            "name": "NewVoter",
+            "type": "event"
+        },
         {
-            "internalType": "string",
-            "name": "",
-            "type": "string"
-        }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-},
-{
-    "inputs": [
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "voter",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "candidateIndex",
+                    "type": "uint256"
+                }
+            ],
+            "name": "VoteCast",
+            "type": "event"
+        },
         {
-            "internalType": "string",
-            "name": "_message",
-            "type": "string"
+            "anonymous": false,
+            "inputs": [],
+            "name": "VotingComplete",
+            "type": "event"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "candidates",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "name",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "voteCount",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "candidateIndex",
+                    "type": "uint256"
+                }
+            ],
+            "name": "castVote",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "newText",
+                    "type": "string"
+                }
+            ],
+            "name": "changeText",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getCandidates",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "string",
+                            "name": "name",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "voteCount",
+                            "type": "uint256"
+                        }
+                    ],
+                    "internalType": "struct Contract.Candidate[]",
+                    "name": "",
+                    "type": "tuple[]"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getWinner",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "registerVoter",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "speak",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "name": "voters",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "isRegistered",
+                    "type": "bool"
+                },
+                {
+                    "internalType": "bool",
+                    "name": "hasVoted",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
         }
-    ],
-    "name": "setMessage",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-}
-]`
+    ]`
 )

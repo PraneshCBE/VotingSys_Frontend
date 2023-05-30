@@ -40,6 +40,7 @@ export default {
         AdminLogIn
     },
     methods: {
+        
         async connectWallet() {
             let ethereum = window.ethereum;
             if (ethereum) {
@@ -61,7 +62,7 @@ export default {
                 const match = (result.data.aadharNumber === this.aadhar) && (result.data.password === this.password);
                 if (match) {
                     this.error = false;
-                    
+
                     console.log("OTPVERIFY", result.data.otpVerfied);
                     if (result.data.otpVerfied) {
                         await this.connectWallet();
