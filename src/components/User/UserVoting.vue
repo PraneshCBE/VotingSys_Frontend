@@ -1,22 +1,22 @@
 <template>
     <HeaderAll></HeaderAll>
     <div class="stat">
-        <h1>Place your Vote</h1>
+        <h3>Place your Vote</h3>
         <div class="opt">
-            <h1>Current Voting Status: </h1>
+            <h3>Current Voting Status: </h3>
             <label>
-                <h2>{{ printStat }}</h2>
+                <h4>{{ printStat }}</h4>
             </label>
         </div>
         <div v-if="printStat == 'Opened'">
             <div class="cast">
-                <a id="myLink" href="http://localhost:3500" target="_blank"><h1>Let's go VOTE via Blockchain :)</h1></a>
+                <a id="myLink" href="http://localhost:3500" target="_blank"><h3>Let's go VOTE via Blockchain 😊</h3></a>
             </div>
-            <h2>Candidate List</h2>
+            <h4>Candidate List</h4>
             <CandidateList></CandidateList>
 
         </div>
-        <h1 v-else>Come After Opening the Vote, Thank You </h1>
+        <h3 v-else>Come After Opening the Vote, Thank You </h3>
     </div>
 </template>
 <script>

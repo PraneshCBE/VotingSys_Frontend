@@ -1,15 +1,15 @@
 <template>
   <HeaderAll></HeaderAll>
-  <h1>Vankkam {{ user }} </h1>
-  <h2>Welcome to the Secure Voting Portal using Blockchain</h2>
+  <h1> {{ user }} </h1>
+  <h4>Welcome to the Secure Voting using Blockchain 😊</h4>
   <div class="home-screen">
     <div class="button-container">
       <button class="voting-buttona" @click="this.$router.push({name:'UserVoting'});" >
-        <span class="button-text">Go to Voting</span>
+        Go to Voting
       </button>
     </div>
     <div class="serv">
-      <h2>Other Services</h2>
+      <h4>Other Services</h4>
       <img src="../../assets/other_serv.png">
     </div>
   </div>
