@@ -6,7 +6,7 @@ app.config.globalProperties.$url = 'http://3.216.4.3:3000/'
 app.use(router).mount('#app')
 
 app.config.globalProperties.$contractAddress = 
-"0x62362736e5Aa12675ab8528cd1A8bcD8E1a957a5"
+"0xd722d5346c09369A73677c15065b39237E02909a"
 app.config.globalProperties.$abi = JSON.parse(
     `[
         {
@@ -141,13 +141,32 @@ app.config.globalProperties.$abi = JSON.parse(
             "type": "function"
         },
         {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "voterAddress",
+                    "type": "address"
+                }
+            ],
+            "name": "isVoterRegistered",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
             "inputs": [],
             "name": "registerVoter",
             "outputs": [
                 {
-                    "internalType": "uint256",
+                    "internalType": "bool",
                     "name": "",
-                    "type": "uint256"
+                    "type": "bool"
                 }
             ],
             "stateMutability": "nonpayable",

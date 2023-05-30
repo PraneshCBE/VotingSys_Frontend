@@ -20,6 +20,11 @@ contract Contract {
         string name;
         uint voteCount;
     }
+    // Getter function for isRegistered property of a voter
+    function isVoterRegistered(address voterAddress) public view returns (bool) {
+        return voters[voterAddress].isRegistered;
+    }
+    
     Candidate[] public candidates;
     mapping(address => Voter) public voters;
 
@@ -42,14 +47,18 @@ contract Contract {
         emit VoteCast(msg.sender, candidateIndex);
     }
 
- function registerVoter() public returns (uint) {
+modifier notRegistered() {
     require(!voters[msg.sender].isRegistered, "Already registered");
+    _;
+}
+
+function registerVoter() public notRegistered returns (bool) {
     voters[msg.sender] = Voter(true, false);
     emit NewVoter(msg.sender);
-    return 1; // Successful registration
+    return true; // Successful registration
 }
- return 1; // User registered successfully
-}
+
+
 
 
     function getCandidates() public view returns (Candidate[] memory) {

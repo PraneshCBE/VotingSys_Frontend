@@ -10,7 +10,9 @@
         </div>
         <div v-if="printStat == 'Opened'">
             <div class="cast">
-                <a id="myLink" href="http://localhost:3500" target="_blank"><h3>Let's go VOTE via Blockchain 😊</h3></a>
+                <router-link id="myLink" @click="RegisterVoter" to="/voteether">
+                    <h3>Let's go VOTE via Blockchain 😊</h3>
+                </router-link>
             </div>
             <h4>Candidate List</h4>
             <CandidateList></CandidateList>
@@ -20,6 +22,7 @@
     </div>
 </template>
 <script>
+import Web3 from 'web3';
 import axios from 'axios';
 import HeaderAll from './HeaderAll.vue';
 import CandidateList from "../Admin/CandidatesList.vue";
@@ -27,10 +30,10 @@ export default {
     name: "UserVoting",
     data() {
         return {
-            printStat: "Closed",
+            printStat: "Opened",
             voteStat: false,
-            candiChoose:'',
-            candidateSelected:''
+            candiChoose: '',
+            candidateSelected: ''
         };
     },
     computed: {
@@ -42,6 +45,31 @@ export default {
         CandidateList
     },
     methods: {
+        async RegisterVoter() {
+            let web3 = new Web3(window.ethereum);
+            let contract = new web3.eth.Contract(this.$abi, this.$contractAddress);
+            let voterAddress = window.ethereum.selectedAddress;
+
+            let isRegistered = await contract.methods.isVoterRegistered(voterAddress).call();
+
+            if (isRegistered) {
+                console.log("Voter is already registered");
+                // Perform actions for registered voters
+            } else {
+                console.log("Voter is not registered");
+                // Call the registerVoter() function to register the voter
+                contract.methods.registerVoter().send({ from: voterAddress })
+                    .then(() => {
+                        console.log("Voter registered successfully");
+                        // Perform actions after successful registration
+                    })
+                    .catch((error) => {
+                        console.error("Registration error:", error);
+                        // Handle registration error
+                    });
+            }
+        },
+
         async getStat() {
             let uri = this.$url + "voteStats";
             const result = await axios.get(uri)
@@ -49,10 +77,9 @@ export default {
             if (this.voteStat) this.printStat = "Opened"
             else this.printStat = "Closed"
         },
-        voteBlock()
-        {
-            this.candidateSelected=this.candiChoose
-            console.log("Selected Candidate:",this.candidateSelected);
+        voteBlock() {
+            this.candidateSelected = this.candiChoose
+            console.log("Selected Candidate:", this.candidateSelected);
         }
     },
     mounted() {

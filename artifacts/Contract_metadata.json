@@ -137,13 +137,32 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "voterAddress",
+						"type": "address"
+					}
+				],
+				"name": "isVoterRegistered",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "registerVoter",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "bool",
 						"name": "",
-						"type": "uint256"
+						"type": "bool"
 					}
 				],
 				"stateMutability": "nonpayable",
@@ -215,11 +234,11 @@
 	},
 	"sources": {
 		"src\\voting.sol": {
-			"keccak256": "0x48441aeacb9d99602c3d2dbce789b65bf2737db1422d97db7d44b1da4f43675f",
+			"keccak256": "0x54711eff9da5608e40ce6eed6d992eec454f378e377638c18c52debfcffcd4f9",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://fef0358a12352db8f3e021a81eec39c26557693e3f8351a17da541870a736679",
-				"dweb:/ipfs/QmducqmGWkBs4ze3CzDqdjRnnjmoHFTcWj6n2EbEnanNMn"
+				"bzz-raw://e958a582c4e9b324b90f95c399ccccea0e64299dd59b8fdc6542557233ee0745",
+				"dweb:/ipfs/QmNS2hfgEoTXG4ckXULvM8BBUrAbi4nuvr74vz9ufYQwmP"
 			]
 		}
 	},

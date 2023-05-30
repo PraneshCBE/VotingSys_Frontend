@@ -6,6 +6,7 @@ import UserRegister from "./components/User/UserRegister.vue";
 import AdminHome from "./components/Admin/AdminHome.vue";
 import UserVoting from "./components/User/UserVoting.vue";
 import DummyPage from "./components/User/dummy.vue"
+import VoteEther from "./components/User/VoteEther.vue"
 const routes=[
     {
         name:'HomeScreen',
@@ -44,7 +45,12 @@ const routes=[
         component:DummyPage,
         path:'/dummy',
         meta: { requiresAuth: true } 
-    }
+    },
+    {
+        name:'VoteEther',
+        component:VoteEther,
+        path:'/voteether'
+    },
 ];
 
 const router=createRouter({

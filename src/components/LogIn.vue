@@ -22,7 +22,6 @@
     <AdminLogIn v-if="userType == 'admin'"></AdminLogIn>
 </template>
 <script>
-// import Web3 from 'web3'
 import AdminLogIn from "./Admin/AdminLogin.vue";
 import axios from 'axios'
 export default {
