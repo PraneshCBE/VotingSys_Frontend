@@ -37,7 +37,7 @@ export default {
   }
 }
 </script>
-<style>
+<!--<style>
 .home-screen {
   display: flex;
   flex-direction: column;
@@ -88,4 +88,4 @@ export default {
   color: #000;
   background-color: #fff;
 }
-</style>
+</style>-->
