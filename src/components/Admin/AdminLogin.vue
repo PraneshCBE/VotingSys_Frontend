@@ -49,7 +49,7 @@ export default {
 
 }
 </script>
-<style>
+<!--<style>
 .logo {
     width: 150px;
 }
@@ -83,4 +83,4 @@ export default {
 
 .err {
     color: red;
-}</style>
+}</style>-->

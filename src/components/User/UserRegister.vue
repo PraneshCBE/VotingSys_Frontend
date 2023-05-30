@@ -69,7 +69,7 @@ export default {
     }
 }
 </script>
-<style>
+<!--<style>
 .logo {
     width: 150px;
 }
@@ -101,4 +101,4 @@ export default {
     color: white;
     border-color: #8B0304;
 }
-</style>
+</style>-->

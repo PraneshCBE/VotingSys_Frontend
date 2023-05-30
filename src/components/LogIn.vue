@@ -97,7 +97,7 @@ export default {
     }
 }
 </script>
-<style>
+<!--<style>
 .logo {
     margin-top: 2%;
     width: 150px;
@@ -177,4 +177,4 @@ export default {
 .err {
     color: red;
 }
-</style>
+</style>-->

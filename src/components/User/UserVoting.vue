@@ -64,7 +64,7 @@ export default {
     }
 }
 </script>
-<style>
+<!--<style>
 .stat h2 {
     text-align: left;
     margin-left: 5%;
@@ -119,4 +119,4 @@ export default {
 }
 
 
-</style>
+</style>-->
