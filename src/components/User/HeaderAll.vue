@@ -1,5 +1,5 @@
-<template>
-    <nav>
+<template >
+    <nav aria-label="breadcrumb">
         <ul>
        <li><img src="../../assets/logo_1.png"/></li>
     </ul>
