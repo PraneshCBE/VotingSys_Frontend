@@ -10,9 +10,10 @@
         </div>
         <div v-if="printStat == 'Opened'">
             <div class="cast">
-                <router-link id="myLink" @click="RegisterVoter" to="/voteether">
+                <router-link v-if="!voted" id="myLink" @click="RegisterVoter" to="/voteether">
                     <h3>Let's go VOTE via Blockchain 😊</h3>
                 </router-link>
+                <h3 v-else>You have already voted, Thank You</h3>
             </div>
             <h4>Candidate List</h4>
             <CandidateList></CandidateList>
@@ -23,7 +24,7 @@
 </template>
 <script>
 import Web3 from 'web3';
-import axios from 'axios';
+// import axios from 'axios';
 import HeaderAll from './HeaderAll.vue';
 import CandidateList from "../Admin/CandidatesList.vue";
 export default {
@@ -33,7 +34,9 @@ export default {
             printStat: "Opened",
             voteStat: false,
             candiChoose: '',
-            candidateSelected: ''
+            candidateSelected: '',
+            voted: false,
+            walletConnected: false
         };
     },
     computed: {
@@ -69,25 +72,42 @@ export default {
                     });
             }
         },
-
-        async getStat() {
-            let uri = this.$url + "voteStats";
-            const result = await axios.get(uri)
-            this.voteStat = result.data[0].votestatus;
-            if (this.voteStat) this.printStat = "Opened"
-            else this.printStat = "Closed"
+        async isVoted() {
+            let web3 = new Web3(window.ethereum);
+            let contract = new web3.eth.Contract(this.$abi, this.$contractAddress);
+            let voterAddress = window.ethereum.selectedAddress;
+            console.log("Voter Address:", voterAddress)
+            this.voted = await contract.methods.hasVoterVoted(voterAddress).call();
+            console.log("Voted:", this.voted);
         },
+        // async getStat() {
+        //     let uri = this.$url + "voteStats";
+        //     const result = await axios.get(uri)
+        //     this.voteStat = result.data[0].votestatus;
+        //     if (this.voteStat) this.printStat = "Opened"
+        //     else this.printStat = "Closed"
+        // },
         voteBlock() {
             this.candidateSelected = this.candiChoose
             console.log("Selected Candidate:", this.candidateSelected);
         }
     },
     mounted() {
-        this.getStat();
-        let user = localStorage.getItem("user-info");
-        if (!user) {
+        console.log("On Mounted")
+        console.log(window.ethereum,window.ethereum.selectedAddress)
+        if (window.ethereum && window.ethereum.selectedAddress) {
+            this.isVoted();
+            let user = localStorage.getItem("user-info");
+            if (!user) {
+                this.$router.push({ name: 'GeneralLogin' })
+            }
+        }
+        else {
+            alert("Wallet not connected!! Login Again");
+            localStorage.clear();
             this.$router.push({ name: 'GeneralLogin' })
         }
+
     }
 }
 </script>
@@ -149,7 +169,7 @@ export default {
 </style>-->
 
 <style>
-button{
-  width: fit-content;
+button {
+    width: fit-content;
 }
 </style>

@@ -24,7 +24,10 @@
       <!-- Cast Vote -->
 
       <div>
-        <input v-model="candidateIndex" class="form-control" type="number" placeholder="Enter the Candidate id">
+        <!-- <input v-model="candidateIndex" class="form-control" type="number" placeholder="Enter the Candidate id"> -->
+        <select class="form-control" v-model="candidateIndex">
+      <option v-for="(candidate,i) in candidates" :key="candidate.name" :value="i">{{ candidate.name }}</option>
+    </select>
         <button class="btn btn-large" @click="castVote">Vote for Candidate</button>
       </div>
       <CandidateList />
@@ -61,9 +64,9 @@ export default {
       contractResult: '',
       candidateIndex: null,
       newText: '',
-      candidates: '',
       winner: '',
       voted: false,
+      candidates:[]
 
     };
   },
@@ -124,7 +127,9 @@ export default {
         .then((candidate) => {
           console.log(candidate);
           contract.methods.speak().call().then(() => {
-            this.voted = true;
+            //alert message of successfull voting
+            alert("Thank you for Voting!")
+            this.$router.replace({name:'HomeScreen'})
           });
         });
     },
@@ -149,6 +154,14 @@ export default {
         });
     }
   },
+  mounted() {
+    let web3 = new Web3(window.ethereum);
+    let contract = new web3.eth.Contract(this.$abi, this.$contractAddress);
+    contract.methods.getCandidates().call()
+      .then((candidates) => {
+        this.candidates = candidates;
+      });
+  }
 };
 </script>
 <style>

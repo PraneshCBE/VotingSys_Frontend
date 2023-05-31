@@ -24,6 +24,11 @@ contract Contract {
     function isVoterRegistered(address voterAddress) public view returns (bool) {
         return voters[voterAddress].isRegistered;
     }
+
+    // Getter function for hasVoted property of a voter
+    function hasVoterVoted(address voterAddress) public view returns (bool) {
+        return voters[voterAddress].hasVoted;
+    }
     
     Candidate[] public candidates;
     mapping(address => Voter) public voters;
@@ -32,6 +37,12 @@ contract Contract {
         candidates.push(Candidate("candidate1", 0));
         candidates.push(Candidate("candidate2", 0));
         candidates.push(Candidate("candidate3", 0));
+    }
+
+     function addCandidates(string[] memory _names) public {
+        for (uint i = 0; i < _names.length; i++) {
+            candidates.push(Candidate(_names[i], 0));
+        }
     }
 
     event NewVoter(address voter);
