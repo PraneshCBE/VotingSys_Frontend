@@ -5,11 +5,11 @@
     <div class="toggle">
         <label class="toggle-option">
             <input type="radio" value="user" v-model="userType">
-            <span>User</span>
+            <p>User</p>
         </label>
         <label class="toggle-option">
             <input type="radio" value="admin" v-model="userType">
-            <span>Admin</span>
+            <p>Admin</p>
         </label>
     </div>
     <div v-if="userType == 'user'" class="login">
