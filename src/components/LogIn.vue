@@ -32,7 +32,7 @@ export default {
             aadhar: '',
             password: '',
             error: false,
-            walleConnected: false
+            walletConnected: false
         }
     },
     components: {
