@@ -32,7 +32,7 @@ export default {
             aadhar: '',
             password: '',
             error: false,
-            walleConnected: false
+            walletConnected: false
         }
     },
     components: {
@@ -67,6 +67,7 @@ export default {
                         await this.connectWallet();
                         if (this.walletConnected) {
                             localStorage.setItem("user-info", JSON.stringify({ "aadharNumber": this.aadhar, "name": result.data.name }))
+                            localStorage.setItem("isAdmin", false)
                             this.$router.push({ name: 'HomeScreen' })
                         }
                         else {

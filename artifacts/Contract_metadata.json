@@ -51,6 +51,19 @@
 			{
 				"inputs": [
 					{
+						"internalType": "string[]",
+						"name": "_names",
+						"type": "string[]"
+					}
+				],
+				"name": "addCandidates",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
@@ -131,6 +144,25 @@
 						"internalType": "string",
 						"name": "",
 						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "voterAddress",
+						"type": "address"
+					}
+				],
+				"name": "hasVoterVoted",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -234,11 +266,11 @@
 	},
 	"sources": {
 		"src\\voting.sol": {
-			"keccak256": "0x54711eff9da5608e40ce6eed6d992eec454f378e377638c18c52debfcffcd4f9",
+			"keccak256": "0x8687afeeefaef6c60c67fc25d146d6a64d76d1e307a48d31986cc9db1d013475",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://e958a582c4e9b324b90f95c399ccccea0e64299dd59b8fdc6542557233ee0745",
-				"dweb:/ipfs/QmNS2hfgEoTXG4ckXULvM8BBUrAbi4nuvr74vz9ufYQwmP"
+				"bzz-raw://95263389ceaa22f889ad9ab30012687c9522ddf9b3919a41ff558cd8196e7de3",
+				"dweb:/ipfs/QmdEkZHtxkFx2iPE2KdGTj6xXWN4TdYAZLWUAFtY3pFdCG"
 			]
 		}
 	},

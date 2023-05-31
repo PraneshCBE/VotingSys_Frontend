@@ -45,6 +45,7 @@ export default {
                     await this.connectWallet();
                     if (this.walletConnected) {
                         localStorage.setItem("user-info", JSON.stringify({ "employeeId": this.eId, "name": result.data.name }))
+                        localStorage.setItem("isAdmin",true)
                         this.$router.push({ name: 'AdminHome' })
                     } else {
                         this.error = true;
