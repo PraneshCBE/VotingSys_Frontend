@@ -26,41 +26,37 @@
         <!-- Cast Vote -->
 
           <div  >
-            <input v-model="candidateIndex" class="form-control" type="number">
+            <input v-model="candidateIndex" class="form-control" type="number" placeholder="Enter the Candidate id">
             <button class="btn btn-large" @click="castVote">Vote for Candidate</button>
           </div>
- 
-        <!-- Register Voter -->
-
-          <div >
-            <button class="btn btn-large" @click="registerVoter">Register Voter</button>
-            <h5 v-if="voted">Successfuly voted!</h5>
-          </div>
-  
-        <!-- Get Candidates -->
+          <CandidateList></CandidateList>
+        <!-- Get Candidates
    
           <div >
             <button class="btn btn-large" @click="getCandidates">Get Candidates</button>
             <h5> {{ candidates }}</h5>
-          </div>
+          </div> -->
       
-        <!-- Get Winner -->
+        <!-- Get Winner
        
           <div   >
             <button class="btn btn-large" @click="getWinner">Get Winner</button>
             <h5> {{ winner }}</h5>
           </div>
         
-  
+   -->
       </div>
     </div>
   </template>
   
-  <script   >
+  <script>
+  import CandidateList from "../Admin/CandidatesList.vue";
   import Web3 from 'web3';
   export default {
     name: 'VoteEther',
-  
+    components: {
+      CandidateList
+    },
     data() {
       return {
         connected: false,
