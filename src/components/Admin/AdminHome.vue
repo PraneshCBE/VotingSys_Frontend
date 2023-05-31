@@ -32,7 +32,7 @@
     }
   }
   </script>
-  <style>
+  <!--<style>
   .home-screen {
     display: flex;
     flex-direction: column;
@@ -83,4 +83,9 @@
     color: #000;
     background-color: #fff;
   }
-  </style>
+  </style>-->
+  <style>
+button{
+  width: fit-content;
+}
+</style>

@@ -102,3 +102,8 @@ export default {
     border-color: #8B0304;
 }
 </style>-->
+<style>
+button{
+  width: fit-content;
+}
+</style>

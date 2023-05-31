@@ -17,7 +17,7 @@
         <input type="password" v-model="password" placeholder="Enter Password" />
         <button v-on:click="login">Log in</button>
         <p v-if="error" class="err">Please Check your Credentials</p>
-        <router-link to="/register">Register</router-link>
+        <router-link to="/register" role="button">Register</router-link>
     </div>
     <AdminLogIn v-if="userType == 'admin'"></AdminLogIn>
 </template>
@@ -178,3 +178,12 @@ export default {
     color: red;
 }
 </style>-->
+<style>
+.logo {
+    margin-top: 2%;
+    width: 150px;
+}
+button{
+  width: fit-content;
+}
+</style>

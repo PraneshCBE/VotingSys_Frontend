@@ -1,62 +1,61 @@
 <template>
-    <HeaderAll></HeaderAll>
-    <div class="stat">
-    <h1>Voting Control</h1>
-    <div class="opt"><h1>Current Voting Status: </h1>
-    <label>
+  <HeaderAll></HeaderAll>
+  <div class="stat">
+    <h3>Voting Control</h3>
+    <div class="opt">
+      <h3>Current Voting Status: </h3>
+      <label>
         <button @click="changeStat" variant="outline-danger">{{ printStat }}</button>
-        </label>
-        </div>
+      </label>
+    </div>
     <h2>Candidate List</h2>
     <CandidateList></CandidateList>
     <h2 v-if="!voteStat">Stats</h2>
-    </div>
+  </div>
 </template>
 <script>
 import axios from 'axios';
 import HeaderAll from './AdminHeader.vue';
 import CandidateList from "./CandidatesList.vue";
-export default{
-    name:"VoteStats",
-    data(){
-        return{
-            voteStat:false
-        };
-    },
-    computed: {
+export default {
+  name: "VoteStats",
+  data() {
+    return {
+      voteStat: false
+    };
+  },
+  computed: {
     printStat() {
       return this.voteStat ? "Start" : "Stop";
     },
   },
 
-    components:{
-        HeaderAll,
-        CandidateList
+  components: {
+    HeaderAll,
+    CandidateList
+  },
+  methods: {
+    async changeStat() {
+      let uri = this.$url + "voteStats/6431b50915ec9d5db3eca86b";
+      await axios.patch(uri)
+      this.getStat();
     },
-    methods:{
-        async changeStat(){
-            let uri=this.$url+"voteStats/6431b50915ec9d5db3eca86b";
-            await axios.patch(uri)
-            this.getStat();
-        },
-         async getStat(){
-          let uri=this.$url+"voteStats";
-          const result = await axios.get(uri)
-          this.voteStat= result.data[0].votestatus;
-        }
-    },
-    mounted()
-    {
+    async getStat() {
+      let uri = this.$url + "voteStats";
+      const result = await axios.get(uri)
+      this.voteStat = result.data[0].votestatus;
+    }
+  },
+  mounted() {
     this.getStat();
-    let user =localStorage.getItem("user-info");
-    if (!user)
-    {
-        this.$router.push({name: 'GeneralLogin'})
+    let user = localStorage.getItem("user-info");
+    if (!user) {
+      this.$router.push({ name: 'GeneralLogin' })
     }
-    }
+  }
 }
 </script>
-<style>
+<!--<style>
     .stat h2 {
   text-align: left;
   margin-left: 5%;
@@ -85,5 +84,10 @@ export default{
 
 .opt button:active {
   background-color:#2e6737;
+}
+</style>-->
+<style>
+button{
+  width: fit-content;
 }
 </style>

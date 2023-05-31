@@ -147,3 +147,9 @@ export default {
 
 
 </style>-->
+
+<style>
+button{
+  width: fit-content;
+}
+</style>

@@ -89,3 +89,8 @@ export default {
   background-color: #fff;
 }
 </style>-->
+<style>
+button{
+  width: fit-content;
+}
+</style>
