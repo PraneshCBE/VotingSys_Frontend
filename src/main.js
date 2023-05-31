@@ -6,7 +6,7 @@ app.config.globalProperties.$url = 'http://3.216.4.3:3000/'
 app.use(router).mount('#app')
 
 app.config.globalProperties.$contractAddress = 
-"0xAe0DC68Ecf25dC3e73aF4dcb44fAB64ba29a3F8B"
+"0xE187d99166E1A82499024a2392426f46C7afA8EE"
 app.config.globalProperties.$abi = JSON.parse(
     `[
         {

@@ -1,9 +1,9 @@
 <template>
     <HeaderAll></HeaderAll>
-    <div class="stat">
-        <h3>Place your Vote</h3>
+    <div class="center-align">
+        <h3 >Place your Vote</h3>
         <div class="opt">
-            <h3>Current Voting Status: </h3>
+            <h3>Current Voting Status:</h3>
             <label>
                 <h4>{{ printStat }}</h4>
             </label>
@@ -17,11 +17,11 @@
             </div>
             <h4>Candidate List</h4>
             <CandidateList></CandidateList>
-
         </div>
-        <h3 v-else>Come After Opening the Vote, Thank You </h3>
+        <h3 v-else>Come After Opening the Vote, Thank You</h3>
     </div>
 </template>
+  
 <script>
 import Web3 from 'web3';
 // import axios from 'axios';
@@ -94,7 +94,7 @@ export default {
     },
     mounted() {
         console.log("On Mounted")
-        console.log(window.ethereum,window.ethereum.selectedAddress)
+        console.log(window.ethereum, window.ethereum.selectedAddress)
         if (window.ethereum && window.ethereum.selectedAddress) {
             this.isVoted();
             let user = localStorage.getItem("user-info");
@@ -167,9 +167,3 @@ export default {
 
 
 </style>-->
-
-<style>
-button {
-    width: fit-content;
-}
-</style>

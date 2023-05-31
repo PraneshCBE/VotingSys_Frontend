@@ -1,11 +1,11 @@
 <template>
   <HeaderAll></HeaderAll>
-  <div class="stat">
+  <div class="center-align">
     <h3>Voting Control</h3>
     <div class="opt">
       <h3>Current Voting Status: </h3>
       <label>
-        <button @click="changeStat" variant="outline-danger">{{ printStat }}</button>
+        <button class="btn waves-effect waves-light" @click="changeStat" variant="outline-danger">{{ printStat }}</button>
       </label>
     </div>
     <h2>Candidate List</h2>
@@ -86,8 +86,3 @@ export default {
   background-color:#2e6737;
 }
 </style>-->
-<style>
-button{
-  width: fit-content;
-}
-</style>

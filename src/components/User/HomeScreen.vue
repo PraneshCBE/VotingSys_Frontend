@@ -1,19 +1,39 @@
 <template>
   <HeaderAll></HeaderAll>
-  <h1> {{ user }} </h1>
-  <h4>Welcome to the Secure Voting using Blockchain 😊</h4>
+  <h1 class="center-align">{{ user }}</h1>
+  <h4 class="center-align">Welcome to the Secure Voting using Blockchain 😊</h4>
   <div class="home-screen">
-    <div class="button-container">
-      <button class="voting-buttona" @click="this.$router.push({name:'UserVoting'});" >
-        Go to Voting
-      </button>
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Go to Voting</span>
+            <p>Participate in the voting process</p>
+          </div>
+          <div class="card-action">
+            <button class="btn waves-effect waves-light" @click="this.$router.push({name:'UserVoting'});">
+              Go to Voting
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="serv">
-      <h4>Other Services</h4>
-      <img src="../../assets/other_serv.png">
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Other Services</span>
+            <p>Explore additional services</p>
+          </div>
+          <div class="card-image">
+            <img src="../../assets/other_serv.png">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
+
 
 <script>
 import HeaderAll from './HeaderAll.vue';
@@ -89,8 +109,3 @@ export default {
   background-color: #fff;
 }
 </style>-->
-<style>
-button{
-  width: fit-content;
-}
-</style>

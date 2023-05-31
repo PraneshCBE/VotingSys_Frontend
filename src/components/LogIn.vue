@@ -1,26 +1,61 @@
+
 <template>
-    <img class="logo" src="../assets/logo.png">
-    <h1>Log in</h1>
-    <h2>as</h2>
-    <div class="toggle">
-        <label class="toggle-option">
-            <input type="radio" value="user" v-model="userType">
-            <p>User</p>
-        </label>
-        <label class="toggle-option">
-            <input type="radio" value="admin" v-model="userType">
-            <p>Admin</p>
-        </label>
+    <div class="valign-wrapper" style="height: 100vh;background-image:url('https://img.freepik.com/free-vector/indian-tricolor-theme-watercolor-texture-patriotic-background-vector_1055-11952.jpg');background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6 offset-m3">
+                    <div class="card">
+                        <div class="card-content center-align z-depth-4">
+                            <img class="logo" src="../assets/logo.png">
+                            <h4>Log in</h4>
+                            <h5>as</h5>
+                            <!--
+                            <div class="switch">
+                                <label>
+                                    <span>User</span>
+                                    <input type="checkbox">
+                                    <span class="lever"></span>
+                                    <span>Admin</span>
+                                </label>
+                            </div>
+                              -->
+                            <div class="toggle">
+                                <label class="toggle-option">
+                                    <input type="radio" value="user" v-model="userType">
+                                    <span>User</span>
+                                </label>
+                                <label class="toggle-option">
+                                    <input type="radio" value="admin" v-model="userType">
+                                    <span>Admin</span>
+                                </label>
+                            </div>
+
+                            <div v-if="userType === 'user'">
+                                <div class="input-field">
+                                    <input type="text" id="aadhar" v-model="aadhar"
+                                        placeholder="Enter your Aadhar Number" />
+                                </div>
+                                <div class="input-field">
+                                    <input type="password" id="password" v-model="password" placeholder="Enter Password" />
+                                </div>
+                                <button class="waves-effect waves-light btn" v-on:click="login">Log in</button>
+                                <p v-if="error" class="err">Please check your credentials</p>
+                                <div><router-link class="register-link" to="/register">Register</router-link></div>
+                            </div>
+
+                            <AdminLogIn v-if="userType === 'admin'"></AdminLogIn>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div v-if="userType == 'user'" class="login">
-        <input type="text" v-model="aadhar" placeholder="Enter your Aadhar Number" />
-        <input type="password" v-model="password" placeholder="Enter Password" />
-        <button v-on:click="login">Log in</button>
-        <p v-if="error" class="err">Please Check your Credentials</p>
-        <router-link to="/register" role="button">Register</router-link>
-    </div>
-    <AdminLogIn v-if="userType == 'admin'"></AdminLogIn>
 </template>
+
+  
 <script>
 import AdminLogIn from "./Admin/AdminLogin.vue";
 import axios from 'axios'
@@ -39,7 +74,7 @@ export default {
         AdminLogIn
     },
     methods: {
-        
+
         async connectWallet() {
             let ethereum = window.ethereum;
             if (ethereum) {
@@ -179,12 +214,3 @@ export default {
     color: red;
 }
 </style>-->
-<style>
-.logo {
-    margin-top: 2%;
-    width: 150px;
-}
-button{
-  width: fit-content;
-}
-</style>

@@ -1,19 +1,39 @@
 <template>
-    <HeaderAll></HeaderAll>
-    <h1>Vankkam, {{ user }} - Welcome to the Admin Portal </h1>
-    <div class="home-screen">
-      <div class="button-container">
-        <button class="voting-button" @click="this.$router.push({name:'VoteStats'});" >
-          <span class="button-text">Go to Voting Control</span>
-        </button>
-      </div>
-      <div class="serv">
-        <h2>Other Services</h2>
-        <img src="../../assets/other_serv.png">
+  <HeaderAll></HeaderAll>
+  <h1 class="center-align">Vankkam, {{ user }} - Welcome to the Admin Portal</h1>
+  <div class="home-screen">
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Go to Voting Control 🧑‍💻</span>
+            <p>Manage and view voting statistics</p>
+          </div>
+          <div class="card-action">
+            <button class="btn waves-effect waves-light" @click="this.$router.push({name:'VoteStats'});">
+              Go to Voting Control
+              <i class="material-icons right">arrow_forward</i>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </template>
-  
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Other Services</span>
+            <p>Explore additional services</p>
+          </div>
+          <div class="card-image">
+            <img src="../../assets/other_serv.png">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
   <script>
   import HeaderAll from './AdminHeader.vue';
   export default {
@@ -84,8 +104,3 @@
     background-color: #fff;
   }
   </style>-->
-  <style>
-button{
-  width: fit-content;
-}
-</style>

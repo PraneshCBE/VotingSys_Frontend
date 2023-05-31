@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="section">
+    <div class="section centre-align">
 
 
 
@@ -22,14 +22,23 @@
         -->
 
       <!-- Cast Vote -->
-
-      <div>
-        <!-- <input v-model="candidateIndex" class="form-control" type="number" placeholder="Enter the Candidate id"> -->
-        <select class="form-control" v-model="candidateIndex">
-      <option v-for="(candidate,i) in candidates" :key="candidate.name" :value="i">{{ candidate.name }}</option>
-    </select>
-        <button class="btn btn-large" @click="castVote">Vote for Candidate</button>
+      <h2 class="centre-align">Cast your Votes now 😊!!</h2>
+      <div class="row center-align">
+        <div class="input-field col s12">
+          <!-- <input v-model="candidateIndex" class="form-control" type="number" placeholder="Enter the Candidate id"> -->
+          <select class="browser-default" v-model="candidateIndex">
+            <option v-for="(candidate, i) in candidates" :key="candidate.name" :value="i">{{ candidate.name }}</option>
+          </select>
+          <label for="candidateIndex">Select Candidate</label>
+        </div>
       </div>
+
+      <div class="row center-align">
+        <div class="col s12">
+          <button class="btn" @click="castVote">Vote for Candidate</button>
+        </div>
+      </div>
+
       <CandidateList />
       <!-- Get Candidates
    
@@ -66,7 +75,7 @@ export default {
       newText: '',
       winner: '',
       voted: false,
-      candidates:[]
+      candidates: []
 
     };
   },
@@ -129,7 +138,7 @@ export default {
           contract.methods.speak().call().then(() => {
             //alert message of successfull voting
             alert("Thank you for Voting!")
-            this.$router.replace({name:'HomeScreen'})
+            this.$router.replace({ name: 'HomeScreen' })
           });
         });
     },
@@ -160,12 +169,17 @@ export default {
     contract.methods.getCandidates().call()
       .then((candidates) => {
         this.candidates = candidates;
+        console.log(candidates)
       });
   }
 };
 </script>
 <style>
-button{
-  width: fit-content;
+select {
+  appearance: none;
+  background-color: #dfe0e099;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
 }
 </style>

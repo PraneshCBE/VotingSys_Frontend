@@ -1,16 +1,27 @@
 <template>
-  <nav aria-label="breadcrumb">
-        <ul>
-       <li><img src="../../assets/logo_1.png"/></li>
-    </ul>
-       <ul>
-       <li><router-link to="/">Home</router-link> </li>
-       <li><router-link to="/vote">Vote</router-link></li>
-       <li><router-link to="#">Profile</router-link></li>
-       <li><a v-on:click="logout">Logout</a></li>
-    </ul>
+    <nav>
+      <div class="nav-wrapper">
+       <!--<a href="#" class="brand-logo">
+          <img src="../../assets/logo_1.png" alt="Logo" />
+        </a>--> 
+        <a href="#" class="brand-logo"><i class="fa-sharp fa-solid fa-person-booth"></i>Block Vote</a>
+        <ul id="nav-mobile" class="right">
+          <li>
+            <router-link to="/admin">Home</router-link>
+          </li>
+          <li>
+            <router-link to="/votes">Vote</router-link>
+          </li>
+          <li>
+            <router-link to="#">Profile</router-link>
+          </li>
+          <li>
+            <a @click="logout">Logout</a>
+          </li>
+        </ul>
+      </div>
     </nav>
-</template>
+  </template>
 <script>
 
 export default{
@@ -64,8 +75,3 @@ export default{
         color: #000000;
     }
 </style>-->
-<style>
-button{
-  width: fit-content;
-}
-</style>

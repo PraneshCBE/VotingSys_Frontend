@@ -1,22 +1,31 @@
 <template>
-    <button v-if="isAdmin" value="Update List" @click="updateList"></button>
-    <div class="container">
+    <div>
+      <button v-if="isAdmin" class="waves-effect waves-light btn" @click="updateList">Update List</button>
+      <div class="container">
         <div class="row">
+          <div class="col s12">
             <div class="card-group">
-                <div class="card" v-for="(candidate, i) in candidates" :key="candidate._id">
-                    <img :src="candidate.partyLogoUrl" alt="Party Logo" height="200" />
-                    <div class="card-body">
-                        <h4 class="card-title">{{ i + 1 }}</h4>
-                        <h5 class="card-title">{{ candidate.name }}</h5>
-                        <p class="card-text">Aadhar Number: {{ candidate.aadharNumber }}</p>
-                        <p class="card-text">Phone Number: {{ candidate.phoneNumber }}</p>
-                        <p class="card-text">Party: {{ candidate.party }}</p>
-                    </div>
+              <div class="col s12 m6 l4" v-for="(candidate, i) in candidates" :key="candidate._id">
+                <div class="card">
+                  <div class="card-image">
+                    <img :src="candidate.partyLogoUrl" alt="Party Logo">
+                  </div>
+                  <div class="card-content">
+                    <h4 class="card-title">{{ i + 1 }}</h4>
+                    <h5 class="card-title">{{ candidate.name }}</h5>
+                    <p class="card-text">Aadhar Number: {{ candidate.aadharNumber }}</p>
+                    <p class="card-text">Phone Number: {{ candidate.phoneNumber }}</p>
+                    <p class="card-text">Party: {{ candidate.party }}</p>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</template>
+  </template>
+  
   
 <script>
 import Web3 from 'web3';
@@ -71,6 +80,7 @@ export default {
     }
 };
 </script>
+<!--
 <style>
 /* Bootstrap styling */
 .container {
@@ -129,4 +139,4 @@ export default {
 }
 </style>
 
-  
+  -->

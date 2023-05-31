@@ -1,11 +1,14 @@
 <template>
-    <div class="alogin">
-        <input type="text" v-model="eId" placeholder="Enter your Employee Id" />
-        <input type="password" v-model="password" placeholder="Enter Password" />
-        <button v-on:click="login">Log in</button>
+        <div class="input-field">
+            <input type="text" v-model="eId" id="eId" placeholder="Enter your Employee Id" />
+        </div>
+        <div class="input-field">
+            <input type="password" v-model="password" id="password" placeholder="Enter Password" />
+        </div>
+        <button class="waves-effect waves-light btn" v-on:click="login">Log in</button>
         <p v-if="error" class="err">Please Check your Credentials and Try Again!!</p>
-    </div>
 </template>
+  
 <script>
 import axios from 'axios'
 export default {
@@ -45,7 +48,7 @@ export default {
                     await this.connectWallet();
                     if (this.walletConnected) {
                         localStorage.setItem("user-info", JSON.stringify({ "employeeId": this.eId, "name": result.data.name }))
-                        localStorage.setItem("isAdmin",true)
+                        localStorage.setItem("isAdmin", true)
                         this.$router.push({ name: 'AdminHome' })
                     } else {
                         this.error = true;

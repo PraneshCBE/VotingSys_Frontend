@@ -1,20 +1,43 @@
 <template>
-    <div v-if="!success">
-    <img class="logo" src="../../assets/logo.png">
-    <h1>Register to Vote</h1>
-    <div class="reg">
-        <input type="text" v-model="name" placeholder="Enter Your Full Name" />
-        <input type="text" v-model="aadhar" placeholder="Enter your Aadhar Number" />
-        <input type="number" v-model="mob" placeholder="Enter your Mobile Number connected with Aaadhar" />
-        <input type="password" v-model="password" placeholder="Enter Password" @keyup="pcheck" />
+    <div class="valign-wrapper" style="height: 100vh;background-image:url('https://img.freepik.com/free-vector/indian-tricolor-theme-watercolor-texture-patriotic-background-vector_1055-11952.jpg');background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6 offset-m3">
+                    <div class="card">
+                        <div class="card-content center-align z-depth-4">
+                            <img class="logo" src="../../assets/logo.png" alt="Logo">
+                            <h1>Register to Vote</h1>
+                            <div class="reg">
+                                <div class="input-field">
+                                    <input type="text" v-model="name" placeholder="Enter Your Full Name" />
+                                </div>
+                                <div class="input-field">
+                                    <input type="text" v-model="aadhar" placeholder="Enter your Aadhar Number" />
+                                </div>
+                                <div class="input-field">
+                                    <input type="number" v-model="mob"
+                                        placeholder="Enter your Mobile Number connected with Aadhar" />
+                                </div>
+                                <div class="input-field">
+                                    <input type="password" v-model="password" placeholder="Enter Password"
+                                        @keyup="pcheck" />
+                                </div>
+                            </div>
+                            <div class="regb">
+                                <button class="waves-effect waves-light btn" v-on:click="register">Register</button>
+                            </div>
+                            <p v-if="error" class="err">Please Check your Inputs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <OtpVerf v-if="success" :aadhar="aadhar"></OtpVerf>
     </div>
-    <div class="regb">
-        <button v-on:click="register">Register</button>
-    </div>
-    <p v-if="error" class="err">Please Check your Inputs</p>
-</div>
-<OtpVerf v-if="success" :aadhar="aadhar"></OtpVerf>
 </template>
+  
 <script>
 import axios from 'axios';
 import OtpVerf from './OtpVerf.vue';
@@ -26,7 +49,7 @@ export default {
             password: '',
             cpassword: '',
             mob: '',
-            success:false,
+            success: false,
             error: false
         }
     },
@@ -42,23 +65,23 @@ export default {
                 "phoneNumber": this.mob
 
             };
-            let uri = this.$url+"voters";
+            let uri = this.$url + "voters";
             // let uri="api/voters/";
-            try{
-            const result = await axios.post(
-                uri,
-                body1)
-            if (result.status == 201) {
-                this.error=false;
-                alert("Registered Successfully\nPending OTP Verification!!");
-                this.success=true;
-            }
-            else {
+            try {
+                const result = await axios.post(
+                    uri,
+                    body1)
+                if (result.status == 201) {
+                    this.error = false;
+                    alert("Registered Successfully\nPending OTP Verification!!");
+                    this.success = true;
+                }
+                else {
+                    this.error = true;
+                    console.log("body:", result.data.message);
+                }
+            } catch (e) {
                 this.error = true;
-                console.log("body:",result.data.message);
-            }}catch(e)
-            {
-                this.error=true;
             }
         },
         pcheck() {
@@ -103,7 +126,7 @@ export default {
 }
 </style>-->
 <style>
-button{
-  width: fit-content;
+.logo {
+    width: 150px;
 }
 </style>
