@@ -1,8 +1,7 @@
 
 <template>
-    <div class="valign-wrapper" style="height: 100vh;background-image:url('https://img.freepik.com/free-vector/indian-tricolor-theme-watercolor-texture-patriotic-background-vector_1055-11952.jpg');background-repeat: no-repeat;
-background-attachment: fixed;
-background-size: cover;">
+    <div class="valign-wrapper" style="height: 100vh ">
+
         <div class="container">
             <div class="row">
                 <div class="col s12 m6 offset-m3">

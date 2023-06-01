@@ -1,5 +1,5 @@
 <template>
-    <nav>
+    <nav class="indigo darken-1">
       <div class="nav-wrapper">
        <!--<a href="#" class="brand-logo">
           <img src="../../assets/logo_1.png" alt="Logo" />
