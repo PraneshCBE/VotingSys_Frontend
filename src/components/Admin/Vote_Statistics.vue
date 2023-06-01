@@ -3,9 +3,11 @@
   <div class="center-align">
     <h3>Voting Control</h3>
     <div class="opt">
-      <h3>Current Voting Status: </h3>
+      <h3>Current Voting Status: {{ printStats }}</h3>
       <label>
         <button class="btn waves-effect waves-light" @click="stopVote" variant="outline-danger">{{ printStat }}</button>
+        <button v-if='printStat=="Start"' class="btn waves-effect waves-light" @click="publish" variant="outline-danger" style="margin-left: 0.5%;">Publish Results</button>
+        
       </label>
     </div>
     <h2>Candidate List</h2>
@@ -21,12 +23,13 @@ export default {
   name: "VoteStats",
   data() {
     return {
-      voteStat: false
+      voteStat: false,
+      printStats:'',
     };
   },
   computed: {
     printStat() {
-      return this.voteStat ? "Start" : "Stop";
+      return this.voteStat ? "Stop" : "Start";
     },
   },
 
@@ -40,6 +43,7 @@ export default {
       let contract = new web3.eth.Contract(this.$abi, this.$contractAddress);
       this.voteStat=await contract.methods.getVotingOn().call();
       console.log("Vote Status: ",this.voteStat)
+      this.printStats = this.voteStat ? "Started" : "Stopped";
     },
     async stopVote(){
       let web3 = new Web3(window.ethereum);
@@ -48,6 +52,7 @@ export default {
         console.log(result);
         console.log("Vote Status Changed");
         this.getStat();
+        this.printStats = this.voteStat ? "Started" : "Stopped";
       });
     }
 
