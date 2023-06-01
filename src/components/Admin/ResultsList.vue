@@ -1,9 +1,11 @@
 <template>
+    <HeaderAll></HeaderAll>
     <div>
         <div class="container">
             <div class="row">
                 <div class="col s12">
                     <div class="card-group">
+                        <h3 >Results of the election 😊</h3>
                         <div class="col s12 m6 l4" v-for="(candidate, i) in candidates" :key="candidate._id">
                             <div class="card">
                                 <div class="card-image">
@@ -24,6 +26,7 @@
     </div>
 </template>
 <script>
+import HeaderAll from './AdminHeader.vue';
 import Web3 from 'web3';
 export default {
     name: "ResultsList",
@@ -46,22 +49,22 @@ export default {
             card.style.boxShadow = "";
         },
         async makeCandi() {
-            let db = []
+            let db = [];
             await fetch(this.$url + "createCandidates")
                 .then(response => response.json())
                 .then(data => {
-                    db = data
-                });
-            console.log("db:", db)
-            let cont = []
+                db = data;
+            });
+            console.log("db:", db);
+            let cont = [];
             let web3 = new Web3(window.ethereum);
             let contract = new web3.eth.Contract(this.$abi, this.$contractAddress);
             await contract.methods.getCandidates().call()
                 .then((candidates) => {
-                    cont = candidates
-                });
-            console.log("contract:", cont)
-            let join = []
+                cont = candidates;
+            });
+            console.log("contract:", cont);
+            let join = [];
             for (let i = 0; i < db.length; i++) {
                 if (db[i].name == cont[i].name) {
                     join.push({
@@ -69,16 +72,16 @@ export default {
                         party: db[i].party,
                         name: db[i].name,
                         votes: cont[i].voteCount
-                    })
+                    });
                 }
             }
-            console.log("join", join)
-            this.candidates = join
+            console.log("join", join);
+            this.candidates = join;
         }
     },
     mounted() {
-        this.makeCandi()
-
+        this.makeCandi();
     },
+    components: { HeaderAll }
 }
 </script>

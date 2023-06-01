@@ -2,6 +2,7 @@
   <HeaderAll></HeaderAll>
   <h1 class="center-align">{{ user }}</h1>
   <h4 class="center-align">Welcome to the Secure Voting using Blockchain 😊</h4>
+  <marquee behavior="scroll" direction="left">You can submit Forms for Karnataka, Maharashtra, Meghalaya, Nagaland, Tripura, Uttar Pradesh, West Bengal, Lakshadweep, Jammu and Kashmir and Ladakh States/UTs from here. For submitting Forms for other States/UTs please click on https://voters.eci.gov.in</marquee>
   <div class="home-screen">
     <div class="row">
       <div class="col s12">
@@ -118,7 +119,6 @@ export default {
 <style>
 .card {
   background-color: rgba(250, 253, 255, 0.836); /* Adjust the opacity as needed */
-  border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.315); /* Adjust the shadow properties as needed */
 }
 </style>

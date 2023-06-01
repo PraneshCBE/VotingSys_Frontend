@@ -1,14 +1,13 @@
 <template>
-    <div class="valign-wrapper" style="height: 100vh;background-image:url('https://img.freepik.com/free-vector/indian-tricolor-theme-watercolor-texture-patriotic-background-vector_1055-11952.jpg');background-repeat: no-repeat;
-background-attachment: fixed;
-background-size: cover;">
+    
+    <div class="valign-wrapper" style="height: 100vh;">
         <div class="container">
             <div class="row">
                 <div class="col s12 m6 offset-m3">
                     <div class="card">
                         <div class="card-content center-align z-depth-4">
                             <img class="logo" src="../../assets/logo.png" alt="Logo">
-                            <h1>Register to Vote</h1>
+                            <h3>Register to Vote</h3>
                             <div class="reg">
                                 <div class="input-field">
                                     <input type="text" v-model="name" placeholder="Enter Your Full Name" />

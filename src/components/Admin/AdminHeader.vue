@@ -1,27 +1,43 @@
 <template>
-    <nav class="indigo darken-1">
-      <div class="nav-wrapper">
-       <!--<a href="#" class="brand-logo">
-          <img src="../../assets/logo_1.png" alt="Logo" />
-        </a>--> 
-        <a href="#" class="brand-logo"><i class="fa-sharp fa-solid fa-person-booth"></i>Block Vote</a>
-        <ul id="nav-mobile" class="right">
-          <li>
-            <router-link to="/admin">Home</router-link>
-          </li>
-          <li>
-            <router-link to="/votes">Vote</router-link>
-          </li>
-          <li>
-            <router-link to="#">Profile</router-link>
-          </li>
-          <li>
-            <a @click="logout">Logout</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </template>
+  <nav style="background: #153b4ee6;">
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">
+        <i class="fa-sharp fa-solid fa-person-booth hide-on-med-and-down"></i>Block Vote
+      </a>
+      <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+      <ul id="nav-desktop" class="right hide-on-med-and-down">
+        <li>
+          <router-link to="/admin">Home</router-link>
+        </li>
+        <li>
+          <router-link to="/votes">Vote</router-link>
+        </li>
+        <li>
+          <router-link to="#">Profile</router-link>
+        </li>
+        <li>
+          <a @click="logout">Logout</a>
+        </li>
+      </ul>
+      <ul class="sidenav" id="mobile-menu">
+        <li>
+          <router-link to="/admin">Home</router-link>
+        </li>
+        <li>
+          <router-link to="/votes">Vote</router-link>
+        </li>
+        <li>
+          <router-link to="#">Profile</router-link>
+        </li>
+        <li>
+          <a @click="logout">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</template>
 <script>
 
 export default{
@@ -41,11 +57,18 @@ export default{
       this.$router.push({name:"GeneralLogin"});
     }
   this.user=logged.name;
+    // eslint-disable-next-line no-undef
+    M.AutoInit();
+    const mobileMenu = document.querySelector('.sidenav');
+     // eslint-disable-next-line no-undef
+    M.Sidenav.init(mobileMenu);
   }
    
 }
 
 </script>
+
+
 <!--<style>
     body{
         padding: 0;

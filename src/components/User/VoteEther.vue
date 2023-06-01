@@ -1,29 +1,9 @@
 <template>
+  <HeaderAll></HeaderAll>
   <div class="container">
     <div class="section centre-align">
-
-
-
-      <!-- Call Contract 
- 
-          <div  >
-            <button class="btn btn-large" @click="callContract">Call contract</button>
-            <h5>{{ contractResult }}</h5>
-          </div>
- 
-
-          <div  >
-            <form @submit.prevent="sendToContract">
-              <label for="newText">New Text</label>
-              <input type="text" id="newText" v-model="newText" required>
-              <button class="btn btn-large">Submit</button>
-            </form>
-          </div>
-        -->
-
       <!-- Cast Vote -->
       <h2 class="centre-align">Cast your Votes now 😊!!</h2>
-      
       <div class="row center-align">
         <p >Select Candidate</p>
         <div class="input-field col s12">
@@ -34,41 +14,26 @@
           <!--<label for="candidateIndex">Select Candidate</label>-->
         </div>
       </div>
-
       <div class="row center-align">
         <div class="col s12">
           <button class="btn" @click="castVote">Vote for Candidate</button>
         </div>
       </div>
-
-      <CandidateList />
-      <!-- Get Candidates
-   
-          <div >
-            <button class="btn btn-large" @click="getCandidates">Get Candidates</button>
-            <h5> {{ candidates }}</h5>
-          </div> -->
-
-      <!-- Get Winner
-       
-          <div   >
-            <button class="btn btn-large" @click="getWinner">Get Winner</button>
-            <h5> {{ winner }}</h5>
-          </div>
-        
-   -->
     </div>
   </div>
+  <CandidateList />
 </template>
   
 <script>
 import CandidateList from "../Admin/CandidatesList.vue";
+import HeaderAll from "./HeaderAll.vue";
 import Web3 from 'web3';
 export default {
   name: 'VoteEther',
   components: {
-    CandidateList
-  },
+    CandidateList,
+    HeaderAll
+},
   data() {
     return {
       connected: false,

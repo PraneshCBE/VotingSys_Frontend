@@ -10,16 +10,6 @@
                             <img class="logo" src="../assets/logo.png">
                             <h4>Log in</h4>
                             <h5>as</h5>
-                            <!--
-                            <div class="switch">
-                                <label>
-                                    <span>User</span>
-                                    <input type="checkbox">
-                                    <span class="lever"></span>
-                                    <span>Admin</span>
-                                </label>
-                            </div>
-                              -->
                             <div class="toggle">
                                 <label class="toggle-option">
                                     <input type="radio" value="user" v-model="userType">

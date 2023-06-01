@@ -1,6 +1,7 @@
 <template>
   <HeaderAll></HeaderAll>
-  <h1 class="center-align">Vankkam, {{ user }} - Welcome to the Admin Portal</h1>
+  <h1 class="center-align">{{ user }}</h1>
+  <h4 class="center-align">Welcome to the Admin Portal 😊</h4>
   <div class="home-screen">
     <div class="row">
       <div class="col s12">
