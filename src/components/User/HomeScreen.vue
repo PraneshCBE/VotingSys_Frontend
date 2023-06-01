@@ -115,3 +115,10 @@ export default {
   background-color: #fff;
 }
 </style>-->
+<style>
+.card {
+  background-color: rgba(250, 253, 255, 0.836); /* Adjust the opacity as needed */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.315); /* Adjust the shadow properties as needed */
+}
+</style>
