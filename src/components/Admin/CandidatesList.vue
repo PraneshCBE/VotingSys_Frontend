@@ -1,30 +1,31 @@
 <template>
     <div>
-      <button v-if='isAdmin==1' class="waves-effect waves-light btn" @click="updateList">Update List</button>
-      <div class="container">
-        <div class="row">
-          <div class="col s12">
-            <div class="card-group">
-              <div class="col s12 m6 l4" v-for="(candidate, i) in candidates" :key="candidate._id">
-                <div class="card">
-                  <div class="card-image">
-                    <img :src="candidate.partyLogoUrl" alt="Party Logo" width="400" height="250">
-                  </div>
-                  <div class="card-content">
-                    <h4 class="card-title">{{ i + 1 }}</h4>
-                    <h5 class="card-title">{{ candidate.name }}</h5>
-                    <p class="card-text">Aadhar Number: {{ candidate.aadharNumber }}</p>
-                    <p class="card-text">Phone Number: {{ candidate.phoneNumber }}</p>
-                    <p class="card-text">Party: {{ candidate.party }}</p>
-                  </div>
+        <button v-if="isAdmin === 1" class="waves-effect waves-light btn" @click="updateList">Update List</button>
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <div class="card-group">
+                        <div class="col s12 m6 l4" v-for="(candidate, index) in candidates" :key="candidate._id">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img :src="candidate.partyLogoUrl" alt="Party Logo" width="400" height="250">
+                                    <span class="card-title" style="background-color: rgba(10, 17, 23, 0.686);">{{ index + 1 }}</span>
+                                </div>
+                                <div class="card-content">
+                                    <h5 class="card-title" style="font:bold">{{ candidate.name }}</h5>
+                                    <p class="card-text">Aadhar Number: {{ candidate.aadharNumber }}</p>
+                                    <p class="card-text">Phone Number: {{ candidate.phoneNumber }}</p>
+                                    <p class="card-text">Party: {{ candidate.party }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </template>
+</template>
+  
   
   
 <script>
@@ -39,9 +40,9 @@ export default {
     },
     mounted() {
         this.isAdmin = localStorage.getItem('isAdmin')
-        console.log("Admin",this.isAdmin)
-        console.log("bool",this.isAdmin==1)  
-            fetch(this.$url + "createCandidates")
+        console.log("Admin", this.isAdmin)
+        console.log("bool", this.isAdmin == 1)
+        fetch(this.$url + "createCandidates")
             .then(response => response.json())
             .then(data => {
                 this.candidates = data;
@@ -68,34 +69,33 @@ export default {
                 .then((candidates) => {
                     old_candidates = candidates
                 });
-            console.log("Old candi: ",old_candidates)
+            console.log("Old candi: ", old_candidates)
             let candi = []
-            let flag=1
+            let flag = 1
             var i = 0
             for (i = 0; i < this.candidates.length; i++) {
                 flag = 1
-               for (var j = 0; j < old_candidates.length; j++) {
-                   if (this.candidates[i].name == old_candidates[j].name) {
-                       flag = 0
-                       break
-                   }
-               }
-                if (flag == 1) {
-                     candi.push(this.candidates[i].name)
+                for (var j = 0; j < old_candidates.length; j++) {
+                    if (this.candidates[i].name == old_candidates[j].name) {
+                        flag = 0
+                        break
+                    }
                 }
-                
+                if (flag == 1) {
+                    candi.push(this.candidates[i].name)
+                }
+
             }
-            console.log("Candi: ",candi)
-            
-            if (candi.length != 0)
-            {
-            await contract.methods.addCandidates(candi).send({
-                from: window.ethereum.selectedAddress,
-            });
-        }
+            console.log("Candi: ", candi)
+
+            if (candi.length != 0) {
+                await contract.methods.addCandidates(candi).send({
+                    from: window.ethereum.selectedAddress,
+                });
+            }
             await contract.methods.getCandidates().call()
                 .then((candidates) => {
-                    console.log("Contract candi:",candidates)
+                    console.log("Contract candi:", candidates)
                 });
         }
     }

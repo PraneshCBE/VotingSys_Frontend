@@ -10,12 +10,12 @@
                             <div class="card">
                                 <div class="card-image">
                                     <img :src="candidate.partyLogoUrl" alt="Party Logo" width="200" height="200">
+                                    <span class="card-title" style="background-color: rgba(13, 12, 12, 0.638);">{{ i + 1 }}</span>
                                 </div>
                                 <div class="card-content">
-                                    <h4 class="card-title">{{ i + 1 }}</h4>
-                                    <h5 class="card-title">{{ candidate.name }}</h5>
-                                    <p class="card-text">Party: {{ candidate.party }}</p>
-                                    <p class="card-text">Votes: {{ candidate.votes }}</p>
+                                    <h4 class="card-title">{{ candidate.name }}</h4>
+                                    <h6 class="card-text">Party: {{ candidate.party }}</h6>
+                                    <h6 class="card-text">Votes:{{ candidate.votes }}</h6>
                                 </div>
                             </div>
                         </div>

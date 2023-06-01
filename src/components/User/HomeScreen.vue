@@ -1,8 +1,8 @@
 <template>
   <HeaderAll></HeaderAll>
-  <h1 class="center-align">{{ user }}</h1>
+  <h2 class="center-align">{{ user }}</h2>
   <h4 class="center-align">Welcome to the Secure Voting using Blockchain 😊</h4>
-  <marquee behavior="scroll" direction="left">You can submit Forms for Karnataka, Maharashtra, Meghalaya, Nagaland, Tripura, Uttar Pradesh, West Bengal, Lakshadweep, Jammu and Kashmir and Ladakh States/UTs from here. For submitting Forms for other States/UTs please click on https://voters.eci.gov.in</marquee>
+  <marquee behavior="scroll" direction="right">You can submit Forms for Karnataka, Maharashtra, Meghalaya, Nagaland, Tripura, Uttar Pradesh, West Bengal, Lakshadweep, Jammu and Kashmir and Ladakh States/UTs from here. For submitting Forms for other States/UTs please click on https://voters.eci.gov.in</marquee>
   <div class="home-screen">
     <div class="row">
       <div class="col s12">
@@ -33,6 +33,35 @@
       </div>
     </div>
   </div>
+  <footer class="page-footer" style="background: #153b4ee6; bottom: 0; width: 100%; z-index: 10;">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Block Vote</h5>
+          <p class="grey-text">secure voting system built using Vue.js, Express, and Ethereum virtual machine provides a
+            reliable and transparent voting process, ensuring the integrity of the democratic process.
+            🧑‍💻🐼</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Tools used 🚴‍♀️</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Vue js</a><img
+                src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg" width=50px height=10px />
+            </li>
+            <li><a class="grey-text text-lighten-3" href="#!">Node</a><img
+                src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" width=50px height=10px />
+            </li>
+            <li><a class="grey-text text-lighten-3" href="#!">Ethereum</a> <img
+                src="https://upload.wikimedia.org/wikipedia/commons/7/76/Ethereum_Classic_logo.svg" width=50px
+                height=10px /></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        © 2023 Cyber_Centis
+      </div>
+    </div>
+  </footer>
 </template>
 
 
