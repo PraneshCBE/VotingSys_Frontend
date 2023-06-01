@@ -5,7 +5,8 @@
     <div class="opt">
       <h3>Current Voting Status: </h3>
       <label>
-        <button class="btn waves-effect waves-light" @click="stopVote" variant="outline-danger">{{ printStat }}</button>
+        <button class="btn waves-effect waves-light" @click="stopVote" variant="outline-danger">Stop</button>
+        <button class="btn waves-effect waves-light" @click="startVote" variant="outline-danger">Start</button>
       </label>
     </div>
     <h2>Candidate List</h2>
@@ -44,9 +45,18 @@ export default {
     async stopVote(){
       let web3 = new Web3(window.ethereum);
       let contract = new web3.eth.Contract(this.$abi, this.$contractAddress);
-      await contract.methods.stopVote(!this.voteStat).call().then((result) => {
+      await contract.methods.endVoting().call().then((result) => {
         console.log(result);
-        console.log("Vote Status Changed");
+        console.log("Vote stoped");
+        this.getStat();
+      });
+    },
+    async startVote(){
+      let web3 = new Web3(window.ethereum);
+      let contract = new web3.eth.Contract(this.$abi, this.$contractAddress);
+      await contract.methods.startVoting().call().then((result) => {
+        console.log(result);
+        console.log("Vote started");
         this.getStat();
       });
     }

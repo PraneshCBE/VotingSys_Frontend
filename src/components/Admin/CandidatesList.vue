@@ -8,7 +8,7 @@
               <div class="col s12 m6 l4" v-for="(candidate, i) in candidates" :key="candidate._id">
                 <div class="card">
                   <div class="card-image">
-                    <img :src="candidate.partyLogoUrl" alt="Party Logo">
+                    <img :src="candidate.partyLogoUrl" alt="Party Logo" width="400" height="250">
                   </div>
                   <div class="card-content">
                     <h4 class="card-title">{{ i + 1 }}</h4>

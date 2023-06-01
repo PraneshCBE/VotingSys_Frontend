@@ -126,6 +126,13 @@
 			},
 			{
 				"inputs": [],
+				"name": "endVoting",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "getCandidates",
 				"outputs": [
 					{
@@ -240,14 +247,8 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "bool",
-						"name": "_votingOn",
-						"type": "bool"
-					}
-				],
-				"name": "stopVote",
+				"inputs": [],
+				"name": "startVoting",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -318,11 +319,11 @@
 	},
 	"sources": {
 		"src\\voting.sol": {
-			"keccak256": "0x126f2f889ee38208172cd04b66e2ab19b3e74825a50b1d02a904e07fb1099733",
+			"keccak256": "0xe3ec73aabe1cad24e1e1e435810f4fb0fc43886b038e7c08bd2d66f73f44722f",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://df1c96ed403a7647f853b270a03be6d7c754cd5ee0ad05dae06eed1e564c2d9f",
-				"dweb:/ipfs/QmNw6zd3KrqVt1ePZiN3N5XGw1cn2XUqW6qVBvK5ktrveV"
+				"bzz-raw://d2bb730f558b3f4c30b10b964e1530ba51a3e1b9ccb4b3e9f637f6d7a9445aa5",
+				"dweb:/ipfs/QmdLSYCML72jQWwy9XjXYXchjAhtzyLsypHGfAAMFqVwRo"
 			]
 		}
 	},

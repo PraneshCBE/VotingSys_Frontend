@@ -16,7 +16,7 @@ contract Contract {
     function changeText(string memory newText) public {
         text = newText;
     }
-
+    
     struct Voter {
         bool isRegistered;
         bool hasVoted;
@@ -37,9 +37,14 @@ contract Contract {
     function getVotingOn () public view returns (bool) {
         return votingOn;
     }
-    function stopVote(bool _votingOn) public {
-        votingOn = _votingOn;
-        emit VotingStatusChanged(_votingOn);
+    function startVoting() public {
+        require(!votingOn, "Voting is already open");
+        votingOn = true;
+    }
+    function endVoting() public {
+        require(votingOn, "Voting is not open yet");
+        votingOn = false;
+        emit VotingComplete();
     }
     Candidate[] public candidates;
     mapping(address => Voter) public voters;
@@ -82,6 +87,7 @@ function registerVoter() public notRegistered returns (bool) {
     }
 
     function getWinner() public view returns (string memory) {
+        require(!votingOn, "Voting is still open");
         uint winningVoteCount = 0;
         uint winningCandidateIndex;
         for (uint i = 0; i < candidates.length; i++) {
