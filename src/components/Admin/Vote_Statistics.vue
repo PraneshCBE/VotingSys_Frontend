@@ -5,8 +5,12 @@
     <div class="opt">
       <h3>Current Voting Status: {{ printStats }}</h3>
       <label>
-        <button class="btn waves-effect waves-light" @click="stopVote" variant="outline-danger">Stop</button>
-        <button class="btn waves-effect waves-light" @click="startVote" variant="outline-danger">Start</button>
+        <button v-if='printStats == "Started"' class="btn waves-effect waves-light" @click="stopVote"
+          variant="outline-danger">Stop</button>
+         <button v-if='printStats == "Stopped"' class="btn waves-effect waves-light" @click="startVote"
+          variant="outline-danger">Start</button>
+          <button v-if='printStats=="Stopped"' class="btn waves-effect waves-light" @click="publish" variant="outline-danger" style="margin-left: 0.5%;">Publish Results</button>
+        
       </label>
     </div>
     <h2>Candidate List</h2>
@@ -23,7 +27,7 @@ export default {
   data() {
     return {
       voteStat: false,
-      printStats:'',
+      printStats: '',
     };
   },
   computed: {
@@ -40,20 +44,24 @@ export default {
     async getStat() {
       let web3 = new Web3(window.ethereum);
       let contract = new web3.eth.Contract(this.$abi, this.$contractAddress);
-      this.voteStat=await contract.methods.getVotingOn().call();
-      console.log("Vote Status: ",this.voteStat)
+      await contract.methods.getVotingOn().call().then((result) => {
+        console.log("Result Voting:", result);
+        this.voteStat = result;
+      })
+      console.log("Vote Status: ", this.voteStat)
       this.printStats = this.voteStat ? "Started" : "Stopped";
     },
-    async stopVote(){
+    async stopVote() {
       let web3 = new Web3(window.ethereum);
       let contract = new web3.eth.Contract(this.$abi, this.$contractAddress);
-      await contract.methods.endVoting().call().then((result) => {
-        console.log(result);
-        console.log("Vote stoped");
-        this.getStat();
-      });
+      await contract.methods.endVoting()
+        .send({ from: window.ethereum.selectedAddress })
+        .then(() => {
+          console.log('Voting stopped');
+          this.getStat();
+        });
     },
-    async startVote(){
+    async startVote() {
       let web3 = new Web3(window.ethereum);
       let contract = new web3.eth.Contract(this.$abi, this.$contractAddress);
       await contract.methods.startVoting().call().then((result) => {
@@ -62,6 +70,12 @@ export default {
         this.getStat();
         this.printStats = this.voteStat ? "Started" : "Stopped";
       });
+      await contract.methods.startVoting()
+        .send({ from: window.ethereum.selectedAddress })
+        .then(() => {
+          console.log("Vote started");
+          this.getStat();
+        });
     }
 
   },
