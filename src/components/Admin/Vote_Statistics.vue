@@ -77,7 +77,6 @@ export default {
           this.getStat();
         });
     }
-
   },
   mounted() {
     this.getStat();

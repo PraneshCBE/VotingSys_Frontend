@@ -23,13 +23,15 @@
 
       <!-- Cast Vote -->
       <h2 class="centre-align">Cast your Votes now 😊!!</h2>
+      
       <div class="row center-align">
+        <p >Select Candidate</p>
         <div class="input-field col s12">
           <!-- <input v-model="candidateIndex" class="form-control" type="number" placeholder="Enter the Candidate id"> -->
-          <select class="browser-default" v-model="candidateIndex">
+          <select class="browser-default" v-model="candidateIndex" >
             <option v-for="(candidate, i) in candidates" :key="candidate.name" :value="i">{{ candidate.name }}</option>
           </select>
-          <label for="candidateIndex">Select Candidate</label>
+          <!--<label for="candidateIndex">Select Candidate</label>-->
         </div>
       </div>
 
