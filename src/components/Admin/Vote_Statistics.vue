@@ -15,7 +15,6 @@
     </div>
     <h2>Candidate List</h2>
     <CandidateList></CandidateList>
-    <h2 v-if="!voteStat">Stats</h2>
   </div>
 </template>
 <script>
