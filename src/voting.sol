@@ -79,9 +79,6 @@ function registerVoter() public notRegistered returns (bool) {
     return true; // Successful registration
 }
 
-
-
-
     function getCandidates() public view returns (Candidate[] memory) {
         return candidates;
     }
