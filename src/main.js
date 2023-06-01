@@ -321,3 +321,4 @@ app.config.globalProperties.$abi = JSON.parse(
         }
     ]`
 )
+

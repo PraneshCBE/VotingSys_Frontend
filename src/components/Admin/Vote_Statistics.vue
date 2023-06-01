@@ -63,7 +63,6 @@ export default {
         this.printStats = this.voteStat ? "Started" : "Stopped";
       });
     }
-
   },
   mounted() {
     this.getStat();
