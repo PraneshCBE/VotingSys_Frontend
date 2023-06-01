@@ -76,6 +76,10 @@ export default {
           console.log("Vote started");
           this.getStat();
         });
+    },
+    publish() {
+      confirm("Are you sure you want to publish the results?");
+      this.$router.replace({ name: 'ResultsList' })
     }
   },
   mounted() {

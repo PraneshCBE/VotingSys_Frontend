@@ -7,6 +7,7 @@ import AdminHome from "./components/Admin/AdminHome.vue";
 import UserVoting from "./components/User/UserVoting.vue";
 import DummyPage from "./components/User/dummy.vue"
 import VoteEther from "./components/User/VoteEther.vue"
+import ResultsList from "./components/Admin/ResultsList.vue"
 const routes=[
     {
         name:'HomeScreen',
@@ -50,6 +51,11 @@ const routes=[
         name:'VoteEther',
         component:VoteEther,
         path:'/voteether'
+    },
+    {
+        name:'ResultsList',
+        component:ResultsList,
+        path:'/results'
     },
 ];
 
