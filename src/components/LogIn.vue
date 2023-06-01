@@ -125,8 +125,12 @@ export default {
     },
     mounted() {
         let logged = localStorage.getItem("user-info");
-        if (logged) {
+        let isAdmin = localStorage.getItem("isAdmin");
+        if (logged && isAdmin == 0) {
             this.$router.push({ name: "HomeScreen" })
+        }
+        else if (logged && isAdmin == 1) {
+            this.$router.push({ name: "AdminHome" })
         }
     }
 }

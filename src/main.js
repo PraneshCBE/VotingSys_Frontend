@@ -6,7 +6,7 @@ app.config.globalProperties.$url = 'http://3.216.4.3:3000/'
 app.use(router).mount('#app')
 
 app.config.globalProperties.$contractAddress = 
-"0x206E156f4770AE33B90b73dc4e2dC534e3C01E5D"
+"0x0Ba21FdF1B917cF4454dBA327EDCd86a06109dC1"
 app.config.globalProperties.$abi = JSON.parse(
     `[
         {
@@ -50,6 +50,19 @@ app.config.globalProperties.$abi = JSON.parse(
             "anonymous": false,
             "inputs": [],
             "name": "VotingComplete",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "bool",
+                    "name": "newStatus",
+                    "type": "bool"
+                }
+            ],
+            "name": "VotingStatusChanged",
             "type": "event"
         },
         {
@@ -261,6 +274,19 @@ app.config.globalProperties.$abi = JSON.parse(
                 {
                     "internalType": "bool",
                     "name": "hasVoted",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "votingOn",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
                     "type": "bool"
                 }
             ],

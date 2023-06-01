@@ -11,7 +11,7 @@
             <p>Participate in the voting process</p>
           </div>
           <div class="card-action">
-            <button class="btn waves-effect waves-light" @click="this.$router.push({name:'UserVoting'});">
+            <button class="btn waves-effect waves-light" @click="this.$router.push({ name: 'UserVoting' });">
               Go to Voting
             </button>
           </div>
@@ -47,15 +47,21 @@ export default {
   components: {
     HeaderAll
   },
-  mounted(){
-    let logged=JSON.parse(localStorage.getItem("user-info"));
-    if (!logged)
-    {
-      this.$router.push({name:"GeneralLogin"});
+  mounted() {
+    let logged = JSON.parse(localStorage.getItem("user-info"));
+    if (!logged) {
+      this.$router.push({ name: "GeneralLogin" });
     }
-  this.user=logged.name;
-  }
-}
+    this.user = logged.name;
+    let isAdmin = localStorage.getItem("isAdmin");
+    if (isAdmin == 1) {
+      this.$router.push({ name: "AdminHome" });
+    }
+    else if (isAdmin == undefined) {
+      this.$router.push({ name: "GeneralLogin" });
+    }
+  },
+};  
 </script>
 <!--<style>
 .home-screen {
