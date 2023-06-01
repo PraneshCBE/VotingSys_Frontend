@@ -61,21 +61,41 @@ export default {
             card.style.boxShadow = "";
         },
         async updateList() {
-            let candi = []
-            var i = 0
-            for (i = 0; i < this.candidates.length; i++) {
-                candi.push(this.candidates[i].name)
-            }
-            console.log(candi)
+            let old_candidates = [] //array of struct {name ,votes}
             let web3 = new Web3(window.ethereum);
             let contract = new web3.eth.Contract(this.$abi, this.$contractAddress);
-
+            await contract.methods.getCandidates().call()
+                .then((candidates) => {
+                    old_candidates = candidates
+                });
+            console.log("Old candi: ",old_candidates)
+            let candi = []
+            let flag=1
+            var i = 0
+            for (i = 0; i < this.candidates.length; i++) {
+                flag = 1
+               for (var j = 0; j < old_candidates.length; j++) {
+                   if (this.candidates[i].name == old_candidates[j].name) {
+                       flag = 0
+                       break
+                   }
+               }
+                if (flag == 1) {
+                     candi.push(this.candidates[i].name)
+                }
+                
+            }
+            console.log("Candi: ",candi)
+            
+            if (candi.length != 0)
+            {
             await contract.methods.addCandidates(candi).send({
                 from: window.ethereum.selectedAddress,
             });
+        }
             await contract.methods.getCandidates().call()
                 .then((candidates) => {
-                    console.log(candidates)
+                    console.log("Contract candi:",candidates)
                 });
         }
     }

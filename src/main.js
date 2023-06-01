@@ -6,7 +6,7 @@ app.config.globalProperties.$url = 'http://3.216.4.3:3000/'
 app.use(router).mount('#app')
 
 app.config.globalProperties.$contractAddress = 
-"0xf8673a6224eea4D9Dc4E0feB3EFAe431f7518A4f"
+"0x0Ba21FdF1B917cF4454dBA327EDCd86a06109dC1"
 app.config.globalProperties.$abi = JSON.parse(
     `[
         {
@@ -69,6 +69,19 @@ app.config.globalProperties.$abi = JSON.parse(
             "name": "VotingStatusChanged",
             "type": "event",
             "signature": "0x9069a1a16ace751e8690f383e12f87b01e8488ba387e626810bd113fef0417f9"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "bool",
+                    "name": "newStatus",
+                    "type": "bool"
+                }
+            ],
+            "name": "VotingStatusChanged",
+            "type": "event"
         },
         {
             "inputs": [
@@ -304,24 +317,7 @@ app.config.globalProperties.$abi = JSON.parse(
                 }
             ],
             "stateMutability": "view",
-            "type": "function",
-            "constant": true,
-            "signature": "0xa3ec138d"
-        },
-        {
-            "inputs": [],
-            "name": "votingOn",
-            "outputs": [
-                {
-                    "internalType": "bool",
-                    "name": "",
-                    "type": "bool"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function",
-            "constant": true,
-            "signature": "0x20949bb4"
+            "type": "function"
         }
     ]`
 )
