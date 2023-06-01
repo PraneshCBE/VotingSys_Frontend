@@ -4,6 +4,11 @@ pragma solidity >=0.8.0;
 contract Contract {
     string private text;
 
+    bool public votingOn;
+    event VotingStatusChanged(bool newStatus);
+    constructor() {
+        votingOn = true;
+    }
     function speak() public view returns (string memory) {
         return text;
     }
@@ -29,15 +34,15 @@ contract Contract {
     function hasVoterVoted(address voterAddress) public view returns (bool) {
         return voters[voterAddress].hasVoted;
     }
-    
+    function getVotingOn () public view returns (bool) {
+        return votingOn;
+    }
+    function stopVote(bool _votingOn) public {
+        votingOn = _votingOn;
+        emit VotingStatusChanged(_votingOn);
+    }
     Candidate[] public candidates;
     mapping(address => Voter) public voters;
-
-    constructor() {
-        candidates.push(Candidate("candidate1", 0));
-        candidates.push(Candidate("candidate2", 0));
-        candidates.push(Candidate("candidate3", 0));
-    }
 
      function addCandidates(string[] memory _names) public {
         for (uint i = 0; i < _names.length; i++) {

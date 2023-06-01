@@ -6,14 +6,13 @@ app.config.globalProperties.$url = 'http://3.216.4.3:3000/'
 app.use(router).mount('#app')
 
 app.config.globalProperties.$contractAddress = 
-"0xE187d99166E1A82499024a2392426f46C7afA8EE"
+"0x206E156f4770AE33B90b73dc4e2dC534e3C01E5D"
 app.config.globalProperties.$abi = JSON.parse(
     `[
         {
             "inputs": [],
             "stateMutability": "nonpayable",
-            "type": "constructor",
-            "signature": "constructor"
+            "type": "constructor"
         },
         {
             "anonymous": false,
@@ -26,8 +25,7 @@ app.config.globalProperties.$abi = JSON.parse(
                 }
             ],
             "name": "NewVoter",
-            "type": "event",
-            "signature": "0x668b14b635e60c984edc522ab57ecf4f7df5f95e912da87692905dc5aa111487"
+            "type": "event"
         },
         {
             "anonymous": false,
@@ -46,15 +44,13 @@ app.config.globalProperties.$abi = JSON.parse(
                 }
             ],
             "name": "VoteCast",
-            "type": "event",
-            "signature": "0xa36cc2bebb74db33e9f88110a07ef56e1b31b24b4c4f51b54b1664266e29f45b"
+            "type": "event"
         },
         {
             "anonymous": false,
             "inputs": [],
             "name": "VotingComplete",
-            "type": "event",
-            "signature": "0x94952e77d0e8498eed40be9fb464640d8a6ea76fb1f15a5387255938091b0a48"
+            "type": "event"
         },
         {
             "inputs": [
@@ -67,8 +63,7 @@ app.config.globalProperties.$abi = JSON.parse(
             "name": "addCandidates",
             "outputs": [],
             "stateMutability": "nonpayable",
-            "type": "function",
-            "signature": "0xa999e562"
+            "type": "function"
         },
         {
             "inputs": [
@@ -92,9 +87,7 @@ app.config.globalProperties.$abi = JSON.parse(
                 }
             ],
             "stateMutability": "view",
-            "type": "function",
-            "constant": true,
-            "signature": "0x3477ee2e"
+            "type": "function"
         },
         {
             "inputs": [
@@ -107,8 +100,7 @@ app.config.globalProperties.$abi = JSON.parse(
             "name": "castVote",
             "outputs": [],
             "stateMutability": "nonpayable",
-            "type": "function",
-            "signature": "0x3eb76b9c"
+            "type": "function"
         },
         {
             "inputs": [
@@ -121,8 +113,7 @@ app.config.globalProperties.$abi = JSON.parse(
             "name": "changeText",
             "outputs": [],
             "stateMutability": "nonpayable",
-            "type": "function",
-            "signature": "0x039b925a"
+            "type": "function"
         },
         {
             "inputs": [],
@@ -147,9 +138,20 @@ app.config.globalProperties.$abi = JSON.parse(
                 }
             ],
             "stateMutability": "view",
-            "type": "function",
-            "constant": true,
-            "signature": "0x06a49fce"
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getVotingOn",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
         },
         {
             "inputs": [],
@@ -162,9 +164,7 @@ app.config.globalProperties.$abi = JSON.parse(
                 }
             ],
             "stateMutability": "view",
-            "type": "function",
-            "constant": true,
-            "signature": "0x8e7ea5b2"
+            "type": "function"
         },
         {
             "inputs": [
@@ -183,9 +183,7 @@ app.config.globalProperties.$abi = JSON.parse(
                 }
             ],
             "stateMutability": "view",
-            "type": "function",
-            "constant": true,
-            "signature": "0xfd11f97a"
+            "type": "function"
         },
         {
             "inputs": [
@@ -204,9 +202,7 @@ app.config.globalProperties.$abi = JSON.parse(
                 }
             ],
             "stateMutability": "view",
-            "type": "function",
-            "constant": true,
-            "signature": "0xeb2119db"
+            "type": "function"
         },
         {
             "inputs": [],
@@ -219,8 +215,7 @@ app.config.globalProperties.$abi = JSON.parse(
                 }
             ],
             "stateMutability": "nonpayable",
-            "type": "function",
-            "signature": "0xecb617d9"
+            "type": "function"
         },
         {
             "inputs": [],
@@ -233,9 +228,20 @@ app.config.globalProperties.$abi = JSON.parse(
                 }
             ],
             "stateMutability": "view",
-            "type": "function",
-            "constant": true,
-            "signature": "0x50d85315"
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "bool",
+                    "name": "_votingOn",
+                    "type": "bool"
+                }
+            ],
+            "name": "stopVote",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
         },
         {
             "inputs": [
@@ -259,9 +265,7 @@ app.config.globalProperties.$abi = JSON.parse(
                 }
             ],
             "stateMutability": "view",
-            "type": "function",
-            "constant": true,
-            "signature": "0xa3ec138d"
+            "type": "function"
         }
     ]`
 )

@@ -44,9 +44,7 @@ background-size: cover;">
                                 <p v-if="error" class="err">Please check your credentials</p>
                                 <div><router-link class="register-link" to="/register">Register</router-link></div>
                             </div>
-
                             <AdminLogIn v-if="userType === 'admin'"></AdminLogIn>
-
                         </div>
                     </div>
                 </div>
@@ -102,7 +100,7 @@ export default {
                         await this.connectWallet();
                         if (this.walletConnected) {
                             localStorage.setItem("user-info", JSON.stringify({ "aadharNumber": this.aadhar, "name": result.data.name }))
-                            localStorage.setItem("isAdmin", false)
+                            localStorage.setItem("isAdmin", 0)
                             this.$router.push({ name: 'HomeScreen' })
                         }
                         else {

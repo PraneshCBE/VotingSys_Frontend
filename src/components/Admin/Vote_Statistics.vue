@@ -5,7 +5,7 @@
     <div class="opt">
       <h3>Current Voting Status: </h3>
       <label>
-        <button class="btn waves-effect waves-light" @click="changeStat" variant="outline-danger">{{ printStat }}</button>
+        <button class="btn waves-effect waves-light" @click="stopVote" variant="outline-danger">{{ printStat }}</button>
       </label>
     </div>
     <h2>Candidate List</h2>
@@ -14,9 +14,9 @@
   </div>
 </template>
 <script>
-import axios from 'axios';
 import HeaderAll from './AdminHeader.vue';
 import CandidateList from "./CandidatesList.vue";
+import Web3 from 'web3';
 export default {
   name: "VoteStats",
   data() {
@@ -35,16 +35,22 @@ export default {
     CandidateList
   },
   methods: {
-    async changeStat() {
-      let uri = this.$url + "voteStats/6431b50915ec9d5db3eca86b";
-      await axios.patch(uri)
-      this.getStat();
-    },
     async getStat() {
-      let uri = this.$url + "voteStats";
-      const result = await axios.get(uri)
-      this.voteStat = result.data[0].votestatus;
+      let web3 = new Web3(window.ethereum);
+      let contract = new web3.eth.Contract(this.$abi, this.$contractAddress);
+      this.voteStat=await contract.methods.getVotingOn().call();
+      console.log("Vote Status: ",this.voteStat)
+    },
+    async stopVote(){
+      let web3 = new Web3(window.ethereum);
+      let contract = new web3.eth.Contract(this.$abi, this.$contractAddress);
+      await contract.methods.stopVote(!this.voteStat).call().then((result) => {
+        console.log(result);
+        console.log("Vote Status Changed");
+        this.getStat();
+      });
     }
+
   },
   mounted() {
     this.getStat();

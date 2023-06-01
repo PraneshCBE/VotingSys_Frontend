@@ -49,6 +49,19 @@
 				"type": "event"
 			},
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "newStatus",
+						"type": "bool"
+					}
+				],
+				"name": "VotingStatusChanged",
+				"type": "event"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "string[]",
@@ -138,6 +151,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "getVotingOn",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "getWinner",
 				"outputs": [
 					{
@@ -216,6 +242,19 @@
 			{
 				"inputs": [
 					{
+						"internalType": "bool",
+						"name": "_votingOn",
+						"type": "bool"
+					}
+				],
+				"name": "stopVote",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "",
 						"type": "address"
@@ -231,6 +270,19 @@
 					{
 						"internalType": "bool",
 						"name": "hasVoted",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "votingOn",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
 						"type": "bool"
 					}
 				],
@@ -266,11 +318,11 @@
 	},
 	"sources": {
 		"src\\voting.sol": {
-			"keccak256": "0x8687afeeefaef6c60c67fc25d146d6a64d76d1e307a48d31986cc9db1d013475",
+			"keccak256": "0x126f2f889ee38208172cd04b66e2ab19b3e74825a50b1d02a904e07fb1099733",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://95263389ceaa22f889ad9ab30012687c9522ddf9b3919a41ff558cd8196e7de3",
-				"dweb:/ipfs/QmdEkZHtxkFx2iPE2KdGTj6xXWN4TdYAZLWUAFtY3pFdCG"
+				"bzz-raw://df1c96ed403a7647f853b270a03be6d7c754cd5ee0ad05dae06eed1e564c2d9f",
+				"dweb:/ipfs/QmNw6zd3KrqVt1ePZiN3N5XGw1cn2XUqW6qVBvK5ktrveV"
 			]
 		}
 	},

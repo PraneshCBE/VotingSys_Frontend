@@ -1,6 +1,6 @@
 <template>
     <div>
-      <button v-if="isAdmin" class="waves-effect waves-light btn" @click="updateList">Update List</button>
+      <button v-if='isAdmin==1' class="waves-effect waves-light btn" @click="updateList">Update List</button>
       <div class="container">
         <div class="row">
           <div class="col s12">
@@ -34,13 +34,14 @@ export default {
     data() {
         return {
             candidates: [],
-            isAdmin: ''
+            isAdmin: 0
         };
     },
     mounted() {
         this.isAdmin = localStorage.getItem('isAdmin')
-        console.log(this.isAdmin)
-        fetch(this.$url + "createCandidates")
+        console.log("Admin",this.isAdmin)
+        console.log("bool",this.isAdmin==1)  
+            fetch(this.$url + "createCandidates")
             .then(response => response.json())
             .then(data => {
                 this.candidates = data;
