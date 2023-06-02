@@ -319,11 +319,11 @@
 	},
 	"sources": {
 		"src\\voting.sol": {
-			"keccak256": "0xe3ec73aabe1cad24e1e1e435810f4fb0fc43886b038e7c08bd2d66f73f44722f",
+			"keccak256": "0x0f53f9eab8216f4c1cb1d15ad38429cf90ee295d5bf88eb7c23427054f844924",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://d2bb730f558b3f4c30b10b964e1530ba51a3e1b9ccb4b3e9f637f6d7a9445aa5",
-				"dweb:/ipfs/QmdLSYCML72jQWwy9XjXYXchjAhtzyLsypHGfAAMFqVwRo"
+				"bzz-raw://e02d3890741b96b75e529b8bb19cc6340b201596a9a12cfe52511c97dfacb429",
+				"dweb:/ipfs/QmQ3UD2s3UPYJNi3Bq4PgEMfxDSRcbod1JiEDheBSWQcDc"
 			]
 		}
 	},
