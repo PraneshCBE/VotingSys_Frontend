@@ -7,7 +7,7 @@
                     <div class="card-group">
                         <h3 >Results of the election 😊</h3>
                         <div class="col s12 m6 l4" v-for="(candidate, i) in candidates" :key="candidate._id">
-                            <div class="card">
+                            <div class="card hoverable">
                                 <div class="card-image">
                                     <img :src="candidate.partyLogoUrl" alt="Party Logo" width="200" height="200">
                                     <span class="card-title" style="background-color: rgba(13, 12, 12, 0.638);">{{ i + 1 }}</span>

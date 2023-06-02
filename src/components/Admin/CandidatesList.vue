@@ -6,7 +6,7 @@
                 <div class="col s12">
                     <div class="card-group">
                         <div class="col s12 m6 l4" v-for="(candidate, index) in candidates" :key="candidate._id">
-                            <div class="card">
+                            <div class="card hoverable">
                                 <div class="card-image">
                                     <img :src="candidate.partyLogoUrl" alt="Party Logo" width="400" height="250">
                                     <span class="card-title" style="background-color: rgba(10, 17, 23, 0.686);">{{ index + 1 }}</span>
