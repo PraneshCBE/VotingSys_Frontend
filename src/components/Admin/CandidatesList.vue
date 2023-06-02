@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button v-if="isAdmin === 1" class="waves-effect waves-light btn" @click="updateList">Update List</button>
+        <button v-if="isAdmin == 1" class="waves-effect waves-light btn" @click="updateList">Update List</button>
         <div class="container">
             <div class="row">
                 <div class="col s12">
