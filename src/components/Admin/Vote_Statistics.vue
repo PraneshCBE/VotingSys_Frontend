@@ -67,7 +67,7 @@ export default {
         console.log(result);
         console.log("Vote started");
         this.getStat();
-        this.printStats = this.voteStat ? "Started" : "Stopped";
+        this.printStats = this.voteStat ? "Started🟩" : "Stopped🟥";
       });
       await contract.methods.startVoting()
         .send({ from: window.ethereum.selectedAddress })
