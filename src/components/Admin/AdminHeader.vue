@@ -1,6 +1,7 @@
 <template>
   <nav style="background: #153b4ee6;">
     <div class="nav-wrapper">
+      <p>--</p>
       <a href="#!" class="brand-logo">
         <i class="fa-sharp fa-solid fa-person-booth hide-on-med-and-down"></i>Block Vote
       </a>
